@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'log_ingestor',
     'rest_framework',
     'django_rq',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

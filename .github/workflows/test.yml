@@ -1,7 +1,9 @@
 name: Manual Workflow
 
 on:
-  workflow_dispatch: # This event allows manual triggering
+  pull_request:
+    branches:
+      - main
 
 jobs:
   manual-trigger:

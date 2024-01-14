@@ -1,0 +1,28 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch: # This event allows manual triggering
+
+jobs:
+  manual-trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+    - name: Get PR information
+      run: |
+        pr_number=${{ github.event.number }}
+        pr_base_branch=${{ github.event.pull_request.base.ref }}
+        pr_head_branch=${{ github.event.pull_request.head.ref }}
+
+        echo "PR Number: $pr_number"
+        echo "Base Branch: $pr_base_branch"
+        echo "Head Branch: $pr_head_branch"
+

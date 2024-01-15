@@ -21,8 +21,8 @@ jobs:
     - name: Get PR information
       run: |
         PR_NUMBER=${{ github.event.number }}
-        PR_TITLE=${{ github.event.title }}
-        EVENT=${{ github.event }}
+        PR_TITLE=${{ github.event.pull_request.title }}
+        EVENT=${{ github.event_name }}
         NEW_DESCRIPTION="Your updated PR description here"
         echo "PR Number: $PR_NUMBER"
         echo "EVENT : $EVENT"

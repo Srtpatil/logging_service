@@ -3,7 +3,7 @@ name: Manual Workflow
 on:
   pull_request:
     branches:
-      - main
+      - sp_test
 
 jobs:
   manual-trigger:
@@ -23,7 +23,7 @@ jobs:
         PR_NUMBER=${{ github.event.number }}
         EVENT=${{ github.event_name }}
         NEW_DESCRIPTION="Your updated PR description here 2"
-        echo "PR Number: $PR_NUMBER"
+        echo "SP PR Number: $PR_NUMBER"
         echo "EVENT : $EVENT"
         echo "PR_TITLE : ${{ github.event.pull_request.title }}"
 

@@ -21,8 +21,12 @@ jobs:
     - name: Get PR information
       run: |
         PR_NUMBER=${{ github.event.number }}
+        PR_TITLE=${{ github.event.title }}
+        EVENT=${{ github.event }}
         NEW_DESCRIPTION="Your updated PR description here"
         echo "PR Number: $PR_NUMBER"
+        echo "EVENT : $EVENT"
+        echo "PR_TITLE : $PR_TITLE"
 
         API_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}"
         pr_base_branch=${{ github.base_ref }}

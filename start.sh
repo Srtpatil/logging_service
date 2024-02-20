@@ -1,5 +1,4 @@
 #!/bin/bash
-
 banner() {
     msg="# $* #"
     edge=$(echo "$msg" | sed 's/./#/g')

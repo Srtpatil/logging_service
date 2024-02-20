@@ -1,0 +1,19 @@
+name: Manual Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  manual-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: isort/isort-action@master
+        with:
+          requirementsFiles: "app/requirements.txt"
+          configuration: "--check-only --diff --profile black --line-length 120 --force-grid-wrap 2"

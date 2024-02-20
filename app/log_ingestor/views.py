@@ -1,13 +1,12 @@
-from django.db import connection
-from rest_framework.decorators import api_view
-from rest_framework import status
-from rest_framework.response import Response
-from django.db import close_old_connections, transaction
-from .models import Log, LogResource, LogLevel
 import django_rq
-from .serializers import LogSerializer
-from .helper import dictfetchall
+from django.db import close_old_connections, connection, transaction
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
+from .helper import dictfetchall
+from .models import Log, LogLevel, LogResource
+from .serializers import LogSerializer
 
 q = django_rq.get_queue("logs")
 

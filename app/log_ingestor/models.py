@@ -1,7 +1,7 @@
-from django.db import models
 from django.contrib.postgres.fields import DateTimeRangeField
-from django.contrib.postgres.search import SearchVector, SearchVectorField
 from django.contrib.postgres.indexes import SpGistIndex
+from django.contrib.postgres.search import SearchVector, SearchVectorField
+from django.db import models
 from psycopg2.extras import DateTimeTZRange
 
 

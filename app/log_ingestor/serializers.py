@@ -1,6 +1,6 @@
 from django.db import close_old_connections, transaction
+from log_ingestor.models import Log, LogLevel, LogResource
 from rest_framework import serializers
-from log_ingestor.models import LogLevel, LogResource, Log
 
 
 class LogLevelSerializer(serializers.ModelSerializer):

@@ -1,9 +1,10 @@
-from faker import Faker
-from locust import HttpUser, task
-import random
 import json
+import random
 import uuid
 from datetime import datetime, timezone
+
+from faker import Faker
+from locust import HttpUser, task
 
 fake = Faker()
 

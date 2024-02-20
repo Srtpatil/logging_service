@@ -21,6 +21,11 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ runner.os }}-${{ hashFiles('app/requirements.txt') }}
 
+      - name: Debug cache status
+        run: |
+          echo "Cache status: ${{ steps.cache-pip.outputs.cache-hit }}"
+          ls -l ${{ env.pythonLocation }}
+
       - uses: isort/isort-action@master
         with:
           requirementsFiles: "app/requirements.txt"

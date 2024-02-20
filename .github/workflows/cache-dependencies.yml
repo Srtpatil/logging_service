@@ -1,0 +1,35 @@
+name: update-cache
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  # This workflow builds the Python package dependencies every time that the requirements
+  # files are modified and store it in cache to be accessible by all the CI in all other
+  # branches.
+  build-cache:
+    name: Build Cache
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ runner.os }}-${{ hashFiles('app/requirements.txt') }}
+          lookup-only: true
+
+      - if: steps.cache.outputs.cache-hit != 'true'
+        name: Install dependencies
+        run: |
+          pip install -r app/requirements.txt

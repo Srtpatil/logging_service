@@ -12,21 +12,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: 3.9
 
-      - name: Cache the contents
-        id: cache-pip
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ runner.os }}-${{ hashFiles('app/requirements.txt') }}
-
-      - name: Debug cache status
-        run: |
-          echo "Cache status: ${{ steps.cache-pip.outputs.cache-hit }}"
-          ls -l ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ runner.os }}-${{ hashFiles('app/*.txt') }}
 
       - uses: isort/isort-action@master
         with:
-          requirementsFiles: "app/requirements.txt"
+          requirementsFiles: "app/requirements.txt app/dev.txt"
           configuration: "--check-only --diff"

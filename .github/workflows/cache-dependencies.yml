@@ -32,5 +32,6 @@ jobs:
       - if: steps.cache.outputs.cache-hit != 'true'
         name: Install dependencies
         run: |
+          sudo apt install libssl-dev
           pip install -r app/requirements.txt
           pip install -r app/dev.txt
